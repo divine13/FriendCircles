@@ -1,0 +1,19 @@
+<h1> This is your Epic Feed (developed by Patrick & Sol)</h1>
+
+<% @feed_posts.each do |post|%>
+<li>
+	<%=post.title%>
+	<br>
+	<%=post.body%>
+	<br>
+	<%=post.author.username%>
+	<br>
+	<ul>
+	<%post.links.each do |link|%>
+	<li>
+		<%=link.url%>
+	</li>
+	<%end%>
+</ul>
+</li>
+<%end%>

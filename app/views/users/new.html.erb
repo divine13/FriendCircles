@@ -1,0 +1,37 @@
+<h1>Sign Up</h1>
+
+<form action="<%= users_url %>" method="post">
+	<input type="hidden" name="authenticity_token"
+		value="<%= form_authenticity_token %>">
+
+	<label for="username">Username: </label>
+	<input type="text" name="user[username]"
+			value="<%= @user.username if @user %>" >
+
+	<label for="password">Password: </label>
+	<input type="password" name="user[password]"
+			value="<%= @user.password if @user %>" >
+
+<h3> Your first post!</h3>
+
+<label for="title">Post Title</label>
+<input type="text" name="user[posts_attributes][0][title]" id="title"><br>
+<label for="body">Post Body</label>
+<textarea name="user[posts_attributes][0][body]" id="body"></textarea><br><br>
+<input type="hidden" name="user[posts_attributes][0][author_id]" value="<%=User.all.length + 1%>">
+
+
+<% 3.times do |i| %>
+	<label for="links_attributes_<%=i%>">Link:</label>
+	<input type="text" 		name="user[posts_attributes][0][links_attributes][<%=i%>][url]" 			 		id="links_attributes_<%= i%>"
+	>
+<br>
+<%end%>
+
+
+
+<input type="submit" value="Create User">
+
+</form>
+
+
